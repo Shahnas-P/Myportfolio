@@ -1,0 +1,163 @@
+.experience-section {
+  position: relative;
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.5) 0%, var(--bg-dark) 100%);
+}
+
+/* Timeline structural layout */
+.timeline-container {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+  padding-left: 50px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 60%, var(--border-color) 100%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Node indicator markers */
+.timeline-icon-node {
+  position: absolute;
+  left: -50px; /* offset container padding-left: 50px */
+  top: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-icon-node.work {
+  background: var(--bg-dark);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+}
+
+.timeline-icon-node.edu {
+  background: var(--bg-dark);
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+  box-shadow: 0 0 15px rgba(20, 184, 166, 0.15);
+}
+
+.timeline-content-wrapper {
+  padding-left: 10px;
+}
+
+.timeline-card {
+  padding: 28px;
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.timeline-card:hover {
+  transform: translateY(-2px);
+}
+
+.timeline-period-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.timeline-role-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.timeline-company-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--secondary);
+  margin-bottom: 16px;
+  letter-spacing: 0.01em;
+}
+
+/* Timeline descriptions */
+.timeline-desc-list {
+  padding-left: 16px;
+  margin-bottom: 20px;
+}
+
+.timeline-desc-list li {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  list-style-type: disc;
+}
+
+.timeline-desc-list li::marker {
+  color: var(--primary);
+}
+
+/* Timeline tech tags */
+.timeline-card-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.timeline-tech-chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* Responsive spacing modifications */
+@media (max-width: 640px) {
+  .timeline-container {
+    padding-left: 35px;
+  }
+  
+  .timeline-line {
+    left: 10px;
+  }
+  
+  .timeline-icon-node {
+    left: -35px;
+    width: 32px;
+    height: 32px;
+    top: 4px;
+  }
+  
+  .timeline-icon-node svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .timeline-card {
+    padding: 20px;
+  }
+}
