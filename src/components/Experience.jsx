@@ -1,5 +1,6 @@
 import React from 'react';
 import { Briefcase, Calendar, GraduationCap } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 import './Experience.css';
 
 const Experience = () => {
@@ -68,20 +69,22 @@ const Experience = () => {
       <div className="glow-blob glow-accent" style={{ bottom: '10%', right: '-10%' }}></div>
 
       <div className="container">
-        <div className="section-header">
-          <span className="section-tag">Career Journey</span>
-          <h2 className="section-title text-gradient">Experience & Education</h2>
-          <p className="section-desc">
-            A timeline of my professional accomplishments, academic background, and technical milestones.
-          </p>
-        </div>
+        <ScrollReveal variant="fade-up">
+          <div className="section-header">
+            <span className="section-tag">Career Journey</span>
+            <h2 className="section-title text-gradient">Experience & Education</h2>
+            <p className="section-desc">
+              A timeline of my professional accomplishments, academic background, and technical milestones.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Timeline Layout */}
         <div className="timeline-container">
           <div className="timeline-line"></div>
 
           {experiences.map((exp, index) => (
-            <div key={index} className="timeline-item">
+            <div key={index} className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
               {/* Timeline Icon Node */}
               <div className={`timeline-icon-node ${exp.type}`}>
                 {exp.type === 'work' ? <Briefcase size={18} /> : <GraduationCap size={18} />}
@@ -89,30 +92,32 @@ const Experience = () => {
 
               {/* Timeline Content */}
               <div className="timeline-content-wrapper">
-                <div className="timeline-card glass">
-                  {/* Period Badge */}
-                  <div className="timeline-period-badge">
-                    <Calendar size={14} />
-                    <span>{exp.period}</span>
+                <ScrollReveal variant="fade-up" delay={50}>
+                  <div className="timeline-card glass">
+                    {/* Period Badge */}
+                    <div className="timeline-period-badge">
+                      <Calendar size={14} />
+                      <span>{exp.period}</span>
+                    </div>
+
+                    <h3 className="timeline-role-title">{exp.role}</h3>
+                    <h4 className="timeline-company-name">{exp.company}</h4>
+
+                    <ul className="timeline-desc-list">
+                      {exp.desc.map((bullet, bIdx) => (
+                        <li key={bIdx}>{bullet}</li>
+                      ))}
+                    </ul>
+
+                    <div className="timeline-card-tech">
+                      {exp.tech.map((t, tIdx) => (
+                        <span key={tIdx} className="timeline-tech-chip">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-
-                  <h3 className="timeline-role-title">{exp.role}</h3>
-                  <h4 className="timeline-company-name">{exp.company}</h4>
-
-                  <ul className="timeline-desc-list">
-                    {exp.desc.map((bullet, bIdx) => (
-                      <li key={bIdx}>{bullet}</li>
-                    ))}
-                  </ul>
-
-                  <div className="timeline-card-tech">
-                    {exp.tech.map((t, tIdx) => (
-                      <span key={tIdx} className="timeline-tech-chip">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                </ScrollReveal>
               </div>
             </div>
           ))}

@@ -248,6 +248,12 @@
     width: 100%;
   }
 
+  .hero-visual-reveal-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
   .terminal-window {
     max-width: 100%;
     margin-top: 10px;
@@ -280,5 +286,10 @@
     padding: 16px;
     font-size: 0.75rem;
     line-height: 1.4;
+  }
+
+  .terminal-body pre {
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 }

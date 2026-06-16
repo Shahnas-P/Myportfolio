@@ -283,3 +283,38 @@ button {
     font-size: 2rem;
   }
 }
+
+/* --- Scroll Reveal Animations --- */
+.reveal-container {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-fade-up {
+  transform: translateY(50px);
+}
+
+.reveal-fade-down {
+  transform: translateY(-50px);
+}
+
+.reveal-fade-left {
+  transform: translateX(40px);
+}
+
+.reveal-fade-right {
+  transform: translateX(-40px);
+}
+
+.reveal-scale-up {
+  transform: scale(0.93);
+}
+
+/* Revealed active state */
+.reveal-container.revealed {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+

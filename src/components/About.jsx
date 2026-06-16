@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code, Database, Cpu, Award, Briefcase, Zap } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 import './About.css';
 
 const About = () => {
@@ -32,34 +33,44 @@ const About = () => {
       <div className="glow-blob glow-accent" style={{ top: '30%', left: '10%' }}></div>
       
       <div className="container">
-        <div className="section-header">
-          <span className="section-tag">About Me</span>
-          <h2 className="section-title text-gradient">My Journey & Background</h2>
-          <p className="section-desc">
-            From exploring the laws of physics to engineering enterprise SaaS applications, here is a look at my background and core competencies.
-          </p>
-        </div>
+        <ScrollReveal variant="fade-up">
+          <div className="section-header">
+            <span className="section-tag">About Me</span>
+            <h2 className="section-title text-gradient">My Journey & Background</h2>
+            <p className="section-desc">
+              From exploring the laws of physics to engineering enterprise SaaS applications, here is a look at my background and core competencies.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid-2 about-grid">
           {/* Biography and Stats */}
           <div className="about-bio-panel">
-            <h3 className="about-subtitle">Physics Graduate Turned Full-Stack Software Engineer</h3>
+            <ScrollReveal variant="fade-right" delay={100}>
+              <h3 className="about-subtitle">Physics Graduate Turned Full-Stack Software Engineer</h3>
+            </ScrollReveal>
             
-            <p className="about-text">
-              My journey is defined by a transition from **Physics to Software Engineering**. After completing my BSc in Physics at Calicut University in 2019, I channeled my analytical skills into programming, completing a Certified Full Stack Developer track in MERN stack.
-            </p>
+            <ScrollReveal variant="fade-right" delay={200}>
+              <p className="about-text">
+                My journey is defined by a transition from **Physics to Software Engineering**. After completing my BSc in Physics at Calicut University in 2019, I channeled my analytical skills into programming, completing a Certified Full Stack Developer track in MERN stack.
+              </p>
+            </ScrollReveal>
             
-            <p className="about-text">
-              Since then, I have advanced from a MERN Intern to a **Full Stack Developer** at Fieldiva, contributing to robust multi-tenant SaaS platforms, custom form-builder logic, gRPC-based microservice communications, and Stripe payment processors. I thrive on clean architecture and high-performance development.
-            </p>
+            <ScrollReveal variant="fade-right" delay={300}>
+              <p className="about-text">
+                Since then, I have advanced from a MERN Intern to a **Full Stack Developer** at Fieldiva, contributing to robust multi-tenant SaaS platforms, custom form-builder logic, gRPC-based microservice communications, and Stripe payment processors. I thrive on clean architecture and high-performance development.
+              </p>
+            </ScrollReveal>
 
             <div className="stats-container">
               {stats.map((stat, index) => (
-                <div key={index} className="stat-card glass">
-                  <div className="stat-icon-wrapper">{stat.icon}</div>
-                  <div className="stat-value">{stat.value}</div>
-                  <div className="stat-label">{stat.label}</div>
-                </div>
+                <ScrollReveal key={index} variant="fade-right" delay={index * 100 + 400}>
+                  <div className="stat-card glass">
+                    <div className="stat-icon-wrapper">{stat.icon}</div>
+                    <div className="stat-value">{stat.value}</div>
+                    <div className="stat-label">{stat.label}</div>
+                  </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -67,20 +78,22 @@ const About = () => {
           {/* Categorized Skills */}
           <div className="about-skills-panel">
             {skillCategories.map((category, idx) => (
-              <div key={idx} className="skills-category-card glass">
-                <div className="skills-category-header">
-                  <span className="category-icon">{category.icon}</span>
-                  <h4>{category.title}</h4>
+              <ScrollReveal key={idx} variant="fade-left" delay={idx * 150 + 100}>
+                <div className="skills-category-card glass">
+                  <div className="skills-category-header">
+                    <span className="category-icon">{category.icon}</span>
+                    <h4>{category.title}</h4>
+                  </div>
+                  
+                  <div className="skills-chips-wrapper">
+                    {category.skills.map((skill, sIdx) => (
+                      <span key={sIdx} className="skill-chip">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                
-                <div className="skills-chips-wrapper">
-                  {category.skills.map((skill, sIdx) => (
-                    <span key={sIdx} className="skill-chip">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

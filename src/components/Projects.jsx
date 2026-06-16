@@ -1,6 +1,99 @@
 import React, { useState } from 'react';
 import { Github, ExternalLink, Folder, Layers, Shield, Sparkles, CreditCard, Users, Contact } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 import './Projects.css';
+
+const ProjectCard = ({ project }) => {
+  const [transformStyle, setTransformStyle] = useState('');
+  const [shineStyle, setShineStyle] = useState({ opacity: 0 });
+
+  const handleMouseMove = (e) => {
+    const wrapper = e.currentTarget;
+    const rect = wrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left; // x coordinate within the wrapper (remains stable)
+    const y = e.clientY - rect.top;  // y coordinate within the wrapper (remains stable)
+
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+
+    const dx = x - xc;
+    const dy = y - yc;
+
+    // Maximum rotation angle in degrees (15 is the premium sweet spot)
+    const maxRotate = 15;
+    const tiltX = -(dy / yc) * maxRotate;
+    const tiltY = (dx / xc) * maxRotate;
+
+    // Calculate percentage coordinates for gradient background spot light reflection
+    const px = (x / rect.width) * 100;
+    const py = (y / rect.height) * 100;
+
+    setTransformStyle(`perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`);
+    setShineStyle({
+      opacity: 0.1,
+      background: `radial-gradient(circle at ${px}% ${py}%, rgba(255, 255, 255, 0.8) 0%, transparent 60%)`,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTransformStyle('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
+    setShineStyle({ opacity: 0 });
+  };
+
+  return (
+    <div
+      className="project-card-wrapper"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ display: 'block', height: '100%' }}
+    >
+      <article
+        className="project-card glass"
+        style={{
+          transform: transformStyle,
+          transition: transformStyle ? 'none' : 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
+          height: '100%'
+        }}
+      >
+        {/* Reflective gloss overlay */}
+        <div className="project-card-shine" style={shineStyle} />
+
+        {/* Graphic Header */}
+        <div className="project-card-header" style={{ background: project.gradient }}>
+          <div className="project-card-header-overlay"></div>
+          <div className="project-card-icon-wrapper">
+            {project.icon}
+          </div>
+        </div>
+
+        {/* Body */}
+        <div className="project-card-body">
+          <h3 className="project-card-title">{project.title}</h3>
+          <p className="project-card-desc">{project.desc}</p>
+
+          <div className="project-card-tech">
+            {project.tech.map((t, idx) => (
+              <span key={idx} className="project-tech-chip">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          {/* <div className="project-card-links">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link" aria-label="GitHub Repository">
+              <Github size={18} />
+              <span>Repository</span>
+            </a>
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link live" aria-label="Live Demo">
+              <ExternalLink size={18} />
+              <span>Demo</span>
+            </a>
+          </div> */}
+        </div>
+      </article>
+    </div>
+  );
+};
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -84,64 +177,41 @@ const Projects = () => {
       <div className="glow-blob glow-primary" style={{ bottom: '10%', right: '10%' }}></div>
 
       <div className="container">
-        <div className="section-header">
-          <span className="section-tag">Portfolio</span>
-          <h2 className="section-title text-gradient">Featured Projects</h2>
-          <p className="section-desc">
-            Explore a selected showcase of applications, detailing design, tech choices, and project contributions.
-          </p>
-        </div>
+        <ScrollReveal variant="fade-up">
+          <div className="section-header">
+            <span className="section-tag">Portfolio</span>
+            <h2 className="section-title text-gradient">Featured Projects</h2>
+            <p className="section-desc">
+              Explore a selected showcase of applications, detailing design, tech choices, and project contributions.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Filters Navbar */}
-        <div className="projects-filter-bar">
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              className={`filter-btn ${activeFilter === cat.id ? 'active' : ''}`}
-              onClick={() => setActiveFilter(cat.id)}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
+        <ScrollReveal variant="fade-up" delay={150}>
+          <div className="projects-filter-bar">
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                className={`filter-btn ${activeFilter === cat.id ? 'active' : ''}`}
+                onClick={() => setActiveFilter(cat.id)}
+              >
+                {cat.name}
+              </button>
+            ))}
+          </div>
+        </ScrollReveal>
 
         {/* Projects Grid */}
         <div className="grid-3 projects-grid">
           {filteredProjects.map((project, index) => (
-            <article key={index} className="project-card glass">
-              {/* Graphic Header */}
-              <div className="project-card-header" style={{ background: project.gradient }}>
-                <div className="project-card-header-overlay"></div>
-                <div className="project-card-icon-wrapper">
-                  {project.icon}
-                </div>
-              </div>
-
-              {/* Body */}
-              <div className="project-card-body">
-                <h3 className="project-card-title">{project.title}</h3>
-                <p className="project-card-desc">{project.desc}</p>
-
-                <div className="project-card-tech">
-                  {project.tech.map((t, idx) => (
-                    <span key={idx} className="project-tech-chip">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                {/* <div className="project-card-links">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link" aria-label="GitHub Repository">
-                    <Github size={18} />
-                    <span>Repository</span>
-                  </a>
-                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link live" aria-label="Live Demo">
-                    <ExternalLink size={18} />
-                    <span>Demo</span>
-                  </a>
-                </div> */}
-              </div>
-            </article>
+            <ScrollReveal
+              key={project.title}
+              variant="fade-up"
+              delay={(index % 3) * 120}
+            >
+              <ProjectCard project={project} />
+            </ScrollReveal>
           ))}
         </div>
       </div>
