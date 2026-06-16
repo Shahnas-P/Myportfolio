@@ -163,12 +163,14 @@ button {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 28px;
+  padding: 12px 24px;
   border-radius: 9999px;
   font-weight: 600;
   transition: all var(--transition-normal);
   font-size: 0.95rem;
+  white-space: nowrap;
 }
 
 .btn-primary {

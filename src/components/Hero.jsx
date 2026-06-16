@@ -87,12 +87,15 @@ const Hero = () => {
           </p>
 
           <div className="hero-actions-group">
-            <button className="btn btn-primary" onClick={() => handleScrollTo('projects')}>
+            <a href="#projects" className="btn btn-primary" onClick={(e) => { e.preventDefault(); handleScrollTo('projects'); }}>
               Explore Projects <ArrowRight size={16} />
-            </button>
-            <button className="btn btn-secondary" onClick={() => handleScrollTo('contact')}>
+            </a>
+            <a href="#contact" className="btn btn-secondary" onClick={(e) => { e.preventDefault(); handleScrollTo('contact'); }}>
               Let's Talk <Mail size={16} />
-            </button>
+            </a>
+            <a href="/resume.pdf" download="Shahnas_Resume.pdf" className="btn btn-secondary cv-btn">
+              Download CV <Download size={16} />
+            </a>
           </div>
 
           <div className="hero-socials">
@@ -102,9 +105,9 @@ const Hero = () => {
             <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
               <Linkedin size={20} />
             </a>
-            <a href={`mailto:${userEmail}`} className="social-icon" aria-label="Email">
+            {/* <a href={`mailto:${userEmail}`} className="social-icon" aria-label="Email">
               <Mail size={20} />
-            </a>
+            </a> */}
           </div>
         </div>
 
