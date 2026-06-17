@@ -49,10 +49,11 @@
     .preloader-spinner {
       width: 64px;
       height: 64px;
-      border: 3px solid transparent;
-      border-top-color: #14b8a6;
-      border-bottom-color: #6366f1;
+      border: 3px solid rgba(255, 255, 255, 0.05);
+      border-top: 3px solid #14b8a6;
+      border-bottom: 3px solid #6366f1;
       border-radius: 50%;
+      -webkit-animation: preloader-spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
       animation: preloader-spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
       z-index: 2;
     }
@@ -63,6 +64,7 @@
       height: 64px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(20, 184, 166, 0.4) 0%, transparent 70%);
+      -webkit-animation: preloader-pulse 2s ease-in-out infinite alternate;
       animation: preloader-pulse 2s ease-in-out infinite alternate;
       z-index: 1;
     }
@@ -74,8 +76,14 @@
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      opacity: 0.8;
+      text-shadow: 0 0 8px rgba(20, 184, 166, 0.35);
+      -webkit-animation: preloader-fade-glow 1.5s ease-in-out infinite alternate;
       animation: preloader-fade-glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @-webkit-keyframes preloader-spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
     }
 
     @keyframes preloader-spin {
@@ -83,14 +91,24 @@
       100% { transform: rotate(360deg); }
     }
 
+    @-webkit-keyframes preloader-pulse {
+      0% { -webkit-transform: scale(0.8); opacity: 0.3; }
+      100% { -webkit-transform: scale(1.3); opacity: 0.9; }
+    }
+
     @keyframes preloader-pulse {
       0% { transform: scale(0.8); opacity: 0.3; }
       100% { transform: scale(1.3); opacity: 0.9; }
     }
 
+    @-webkit-keyframes preloader-fade-glow {
+      0% { opacity: 0.35; }
+      100% { opacity: 1; }
+    }
+
     @keyframes preloader-fade-glow {
-      0% { opacity: 0.4; }
-      100% { opacity: 1; text-shadow: 0 0 10px rgba(20, 184, 166, 0.5); }
+      0% { opacity: 0.35; }
+      100% { opacity: 1; }
     }
   </style>
 
