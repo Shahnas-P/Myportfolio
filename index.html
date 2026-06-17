@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon1.svg" />
+  <link rel="icon" type="image/svg+xml" href="/favicon4.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Google Fonts Preconnect and Stylesheets -->
@@ -101,10 +101,12 @@
           transform: rotate(0deg) scale(1);
           box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), 0 0 40px rgba(168, 85, 247, 0.1);
         }
+
         50% {
           transform: rotate(180deg) scale(1.04);
           box-shadow: 0 0 30px rgba(20, 184, 166, 0.4), 0 0 60px rgba(99, 102, 241, 0.2);
         }
+
         100% {
           transform: rotate(360deg) scale(1);
           box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), 0 0 40px rgba(168, 85, 247, 0.1);
@@ -112,13 +114,25 @@
       }
 
       @keyframes orbit {
-        0% { transform: rotate(0deg) translateX(36px) rotate(0deg); }
-        100% { transform: rotate(360deg) translateX(36px) rotate(-360deg); }
+        0% {
+          transform: rotate(0deg) translateX(36px) rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg) translateX(36px) rotate(-360deg);
+        }
       }
 
       @keyframes fade-glow {
-        0% { opacity: 0.4; text-shadow: 0 0 5px rgba(255, 255, 255, 0.1); }
-        100% { opacity: 0.95; text-shadow: 0 0 15px rgba(20, 184, 166, 0.6); }
+        0% {
+          opacity: 0.4;
+          text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+
+        100% {
+          opacity: 0.95;
+          text-shadow: 0 0 15px rgba(20, 184, 166, 0.6);
+        }
       }
     </style>
     <div class="initial-preloader">
