@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, ArrowRight, Download, Terminal } from 'lucide-r
 import ScrollReveal from './ScrollReveal';
 import './Hero.css';
 
-const Hero = () => {
+const RoleTyping = () => {
   const roles = ['Full Stack Engineer', 'React Specialist', 'Backend Developer', 'MERN Stack Developer'];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
@@ -41,6 +41,15 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, currentRoleIndex, typingSpeed]);
 
+  return (
+    <span className="role-typing-wrapper">
+      a  &nbsp; <span className="role-text">{currentText}</span>
+      <span className="typing-cursor">|</span>
+    </span>
+  );
+};
+
+const Hero = () => {
   const handleScrollTo = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -80,10 +89,7 @@ const Hero = () => {
             <h1 className="hero-title">
               Hi, I'm <span className="highlight-text">{userName}</span>
               <br />
-              <span className="role-typing-wrapper">
-                a  &nbsp; <span className="role-text">{currentText}</span>
-                <span className="typing-cursor">|</span>
-              </span>
+              <RoleTyping />
             </h1>
           </ScrollReveal>
 

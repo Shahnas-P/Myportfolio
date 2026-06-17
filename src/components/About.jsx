@@ -52,13 +52,13 @@ const About = () => {
             
             <ScrollReveal variant="fade-right" delay={200}>
               <p className="about-text">
-                My journey is defined by a transition from **Physics to Software Engineering**. After completing my BSc in Physics at Calicut University in 2019, I channeled my analytical skills into programming, completing a Certified Full Stack Developer track in MERN stack.
+                My journey is defined by a transition from <strong>Physics to Software Engineering</strong>. After completing my BSc in Physics at Calicut University in 2019, I channeled my analytical skills into programming, completing a Certified Full Stack Developer track in MERN stack.
               </p>
             </ScrollReveal>
             
             <ScrollReveal variant="fade-right" delay={300}>
               <p className="about-text">
-                Since then, I have advanced from a MERN Intern to a **Full Stack Developer** at Fieldiva, contributing to robust multi-tenant SaaS platforms, custom form-builder logic, gRPC-based microservice communications, and Stripe payment processors. I thrive on clean architecture and high-performance development.
+                Since then, I have advanced from a MERN Intern to a <strong>Full Stack Developer</strong> at Fieldiva, contributing to robust multi-tenant SaaS platforms, custom form-builder logic, gRPC-based microservice communications, and Stripe payment processors. I thrive on clean architecture and high-performance development.
               </p>
             </ScrollReveal>
 

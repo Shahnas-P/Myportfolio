@@ -42,12 +42,17 @@ const ClickFireworks = () => {
 
       draw() {
         ctx.save();
-        ctx.globalAlpha = this.alpha;
         
-        // Glowing stroke shadow
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#14b8a6'; // Glowing Teal shockwave ring
+        // Draw soft glow outline (outer ring) - high performance, no CPU shadowBlur
+        ctx.globalAlpha = this.alpha * 0.15;
+        ctx.strokeStyle = '#14b8a6';
+        ctx.lineWidth = this.lineWidth + 4;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.stroke();
 
+        // Draw sharp high-energy inner ring
+        ctx.globalAlpha = this.alpha;
         ctx.strokeStyle = '#14b8a6';
         ctx.lineWidth = this.lineWidth;
         ctx.beginPath();
@@ -86,19 +91,21 @@ const ClickFireworks = () => {
 
       draw() {
         ctx.save();
-        ctx.globalAlpha = this.alpha;
 
-        // Apply a glowing neon halo matching the theme color
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = this.color;
-
-        // Draw colored spark body
+        // Draw soft glow halo (larger radius, low opacity) - high performance, no CPU shadowBlur
+        ctx.globalAlpha = this.alpha * 0.25;
         ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 2.8, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw solid colored particle body
+        ctx.globalAlpha = this.alpha;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Draw a hot white core in the center of the particle
+        // Draw hot white core in the center of the particle
         ctx.fillStyle = '#ffffff';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size * 0.45, 0, Math.PI * 2);
