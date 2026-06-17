@@ -32,7 +32,7 @@ const Experience = () => {
     },
     {
       role: 'Intern – Full Stack Developer (MERN)',
-      company: 'Luminar Technolab',
+      company: 'MERN Stack Internship Program',
       period: 'November 2022 - April 2023',
       type: 'work',
       desc: [
@@ -43,7 +43,7 @@ const Experience = () => {
     },
     {
       role: 'Certified Full Stack Developer (MERN)',
-      company: 'Luminar Technolab (NACTET Certification)',
+      company: 'NACTET Certification Program',
       period: '2022',
       type: 'edu',
       desc: [
